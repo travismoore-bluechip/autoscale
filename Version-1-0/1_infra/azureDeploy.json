@@ -4,6 +4,7 @@
     "parameters": {
         "panoramaPluginMessageHandlerName": {
             "type": "string",
+            "defaultValue": "taxonomymessagehandler",
             "metadata": {
                 "description": "The name of the Azure Function that will pass messages to the Panorama plugin for Azure. The Azure function URL will begin with this name."
             }
@@ -23,7 +24,7 @@
         },
         "repoURL": {
             "type": "string",
-            "defaultValue": "https://github.com/PaloAltoNetworks/azure-autoscaling.git",
+            "defaultValue": "https://github.com/travismoore-bluechip/autoscale.git",
             "metadata": {
                 "description": "The URL for the GitHub repository that hosts the Azure Function bits."
             }
@@ -37,6 +38,7 @@
         },
         "serviceBusName": {
             "type": "string",
+            "defaultValue": "taxonomyservicebus",
             "metadata": {
                 "description": "The name of the Service Bus that the Panorama subscribes to receive notifications from Azure. The value must be between 6 and 50 characters long. The namespace can contain only letters, numbers, and hyphens. The namespace must start with a letter, and it must end with a letter or number.This name has to be globally unique."
             }
@@ -47,10 +49,10 @@
         "functionAppName": "[parameters('panoramaPluginMessageHandlerName')]",
         "namingInfix": "[substring(uniqueString(resourceGroup().id), 0, 5)]",
         "hostingPlanName": "[concat(parameters('panoramaPluginMessageHandlerName'), '-plan')]",
-        "storageAccountName": "[concat(uniquestring(resourceGroup().id), 'functions')]",
+        "storageAccountName": "saautoscale001",
         "RootManageSharedAccessKey_name": "RootManageSharedAccessKey",
         "serviceBusApiVersion": "2014-09-01",
-        "baseUrl" : "https://raw.githubusercontent.com/PaloAltoNetworks/azure-autoscaling/master/Version-1-0/infra",
+        "baseUrl" : "https://raw.githubusercontent.com/travismoore-bluechip/autoscale/master/Version-1-0/infra",
         "serviceBusUrl": "[concat(variables('baseUrl'), '/deployServiceBus.json')]",
         "functionHostingPlan": "Basic",
         "appInsightsInstancename": "[concat(parameters('panoramaPluginMessageHandlerName'), '-appinsights-', variables('namingInfix'))]",
