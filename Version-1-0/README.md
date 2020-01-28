@@ -63,7 +63,8 @@ https://github.com/PaloAltoNetworks/azure-autoscaling/raw/master/Version-1-0/vid
 [<img src="http://azuredeploy.net/deploybutton.png"/>](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fgithub.com%2Ftravismoore-bluechip%2Fautoscale%2Fmaster%2FVersion-1-0%2Fhub%2FazureDeploy.json)
 
 ***App Deployment***  
-[<img src="http://azuredeploy.net/deploybutton.png"/>](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fgithub.com%2Ftravismoore-bluechip%2Fautoscale%2Fmaster%2FVersion-1-0%2Fapp%2FazureDeploy.json)
+[<img src="http://azuredeploy.net/deploybutton.png"/>](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fgithub
+.com%2Ftravismoore-bluechip%2Fautoscale%2Fmaster%2FVersion-1-0%2Fapp%2FazureDeploy.json)
 
 
 # Support Policy
