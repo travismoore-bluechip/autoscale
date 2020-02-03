@@ -359,58 +359,7 @@
             "dependsOn": [
                 "[resourceId('Microsoft.Compute/virtualMachineScaleSets', parameters('vmssName'))]"
             ],
-            "properties": {
-                "profiles": [
-                    {
-                        "name": "Auto created scale condition",
-                        "capacity": {
-                            "default": "[parameters('vmScaleSetMinCount')]",
-                            "maximum": "[parameters('vmScaleSetMaxCount')]",
-                            "minimum": "[parameters('vmScaleSetMinCount')]"
-                        },
-                        "rules": [
-                            {
-                                "metricTrigger": {
-                                    "metricName": "[variables('scaleMetricMap')[parameters('autoScaleMetric')].metricName]",
-                                    "metricNamespace": "",
-                                    "metricResourceUri": "[variables('scaleMetricMap')[parameters('autoScaleMetric')].metricResourceUri]",
-                                    "timeGrain": "PT1M",
-                                    "statistic": "Average",
-                                    "timeWindow": "PT10M",
-                                    "timeAggregation": "Average",
-                                    "operator": "GreaterThan",
-                                    "threshold": "[parameters('scaleOutThreshold')]"
-                                },
-                                "scaleAction": {
-                                    "direction": "Increase",
-                                    "type": "ChangeCount",
-                                    "value": "1",
-                                    "cooldown": "PT5M"
-                                }
-                            },
-                            {
-                                "metricTrigger": {
-                                    "metricName": "[variables('scaleMetricMap')[parameters('autoScaleMetric')].metricName]",
-                                    "metricNamespace": "",
-                                    "metricResourceUri": "[variables('scaleMetricMap')[parameters('autoScaleMetric')].metricResourceUri]",
-                                    "operator": "LessThan",
-                                    "statistic": "Average",
-                                    "threshold": "[parameters('scaleInThreshold')]",
-                                    "timeAggregation": "Average",
-                                    "timeGrain": "PT1M",
-                                    "timeWindow": "PT10M"
-                                },
-                                "scaleAction": {
-                                    "direction": "Decrease",
-                                    "type": "ChangeCount",
-                                    "value": "1",
-                                    "cooldown": "PT5M"
-                                }
-                            }
-                        ]
-                    }
-                ],
-                "notifications": [
+            "notifications": [
                     {
                         "operation": "Scale",
                         "email": {
