@@ -219,7 +219,7 @@
         "location": "[resourceGroup().location]",
         "namingInfix": "[substring(uniqueString(resourceGroup().id), 0, 5)]",
         "rgname": "[resourceGroup().name]",
-        "networkSecurityGroupName": "[concat('prodedgefw-nsg-', variables('namingInfix'))]",
+        "networkSecurityGroupName": "prodedgefw-nsg-untrusted",
         "MgmtSubnetName": "CloudServices-PaloAltoDMZMgmtIF-172.23.6.0-24",
         "untrustedSubnetName": "CloudServices-PaloAltoDMZExtIF-172.23.8.0-24",
         "trustedSubnetName": "CloudServices-PaloAltoDMZIntIF-172.23.7.0-24",
