@@ -62,14 +62,3 @@ https://github.com/PaloAltoNetworks/azure-autoscaling/raw/master/Version-1-0/vid
 ***Hub Deployment***  
 [<img src="http://azuredeploy.net/deploybutton.png"/>](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fgithub.com%2Ftravismoore-bluechip%2Fautoscale%2Fblob%2Fmaster%2FVersion-1-0%2Fhub%2FazureDeploy.json)
 
-***App Deployment***  
-[<img src="http://azuredeploy.net/deploybutton.png"/>](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fgithub
-.com%2Ftravismoore-bluechip%2Fautoscale%2Fblob%2Fmaster%2FVersion-1-0%2Fapp%2FazureDeploy.json)
-
-
-# Support Policy
-This release is now generally available. The hub and inbound template, as well as the infra template, is released under the official support policy of Palo Alto Networks through the support options that you've purchased, for example Premium Support, support teams, or ASC (Authorized Support Centers) partners and Premium Partner Support options. The support scope is restricted to troubleshooting for the stated/intended use cases and product versions specified in the project documentation and does not cover customization of the scripts or templates.
-
-The application template is Community Supported.
-
-Only projects explicitly tagged with "Supported" information are officially supported. Unless explicitly tagged, all projects or work posted in our GitHub repository or sites other than our official Downloads page are provided under the best effort policy.
