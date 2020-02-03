@@ -377,7 +377,6 @@
                 "enabled": true,
                 "targetResourceUri": "[resourceId('Microsoft.Compute/virtualMachineScaleSets', parameters('vmssName'))]"
             }
-        }
-    ],
+        ],
     "outputs": {}
 }
