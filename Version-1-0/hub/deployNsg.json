@@ -23,7 +23,7 @@
 	{
 		"apiVersion": "[variables('apiVersion')]",
 		"type": "Microsoft.Network/networkSecurityGroups",
-		"name": "[concat(parameters('nsgName'), '-mgmt')]",
+		"name": "CloudServices-PaloAltoInternalMgmtIF-172.23.14.0-24-NSG",
 		"location": "[parameters('location')]",
 		"properties": {
 			"securityRules": [{
@@ -72,7 +72,7 @@
 	},
 	{
         "type": "Microsoft.Network/networkSecurityGroups",
-		"name": "[concat(parameters('nsgName'), '-untrust')]",
+		"name": "CloudServices-PaloAltoInternalExtIF-172.23.16.0-24-NSG",
         "apiVersion": "2017-06-01",
         "location": "[parameters('location')]",
         "properties": {
@@ -211,11 +211,11 @@
 	],
 	"outputs": {
         "MgmtSubnetNsgName": {
-            "value": "[concat(parameters('nsgName'), '-mgmt')]",
+            "value": "CloudServices-PaloAltoInternalMgmtIF-172.23.14.0-24-NSG",
             "type": "string"
         },
         "UntrustSubnetNsgName": {
-            "value": "[concat(parameters('nsgName'), '-untrust')]",
+            "value": "CloudServices-PaloAltoInternalExtIF-172.23.16.0-24-NSG",
             "type": "string"
         }
 	}
