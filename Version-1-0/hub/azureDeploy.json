@@ -378,7 +378,7 @@
                         "value": "[variables('location')]"
                     },
                     "virtualNetworkRG": {
-                        "value": "[variables('rgName')]"
+                        "value": "CloudServices-172-23-0-0-18-RG"
                     },
                     "virtualNetworkName": {
                         "value": "[parameters('virtualNetworkName')]"

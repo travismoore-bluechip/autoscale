@@ -8,7 +8,7 @@
 		},
 		"virtualNetworkrg": {
 			"type": "string",
-			"defaultValue": "pa-vnet",
+			"defaultValue": "CloudServices-172-23-0-0-18-RG",
 			"metadata": {
 				"description": "VNET Resource Group Name"
 			}
