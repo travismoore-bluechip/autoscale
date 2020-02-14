@@ -22,6 +22,7 @@
 
 		"virtualNetworkRG": {
 			"type": "string",
+			"defaultValue": "CloudServices-172-23-0-0-18-RG"
 			"metadata": {
 				"description": "Name of the Virtual Network Resource Group"
 			}
