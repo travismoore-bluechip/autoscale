@@ -29,21 +29,21 @@
 		},
 		"mgmtSubnetPrefix": {
 			"type": "string",
-			"defaultValue": "172.23.6.0/24",
+			"defaultValue": "172.23.9.0/24",
 			"metadata": {
 				"description": "CIDR for Management subnet."
 			}
 		},
 		"untrustSubnetPrefix": {
 			"type": "string",
-			"defaultValue": "172.23.8.0/24",
+			"defaultValue": "172.23.11.0/24",
 			"metadata": {
 				"description": "CIDR for Untrust Network."
 			}
 		},
 		"trustSubnetPrefix": {
 			"type": "string",
-			"defaultValue": "172.23.7.0/24",
+			"defaultValue": "172.23.10.0/24",
 			"metadata": {
 				"description": "CIDR for Trust Network."
 			}
@@ -53,7 +53,7 @@
 			"metadata": {
 				"description": "IP Address for the Internal Load Balancer in front of the Hub VM-Series Firewall."
 			},
-			"defaultValue": "172.23.7.4"
+			"defaultValue": "172.23.10.4"
 		},
 		"networkSecurityGroupInboundIP": {
 			"type": "string",
@@ -124,7 +124,7 @@
 			}
 		},
 		"bootstrapStorageAccount": {
-			"defaultValue": "azfwcldcprdvmsspcussa",
+			"defaultValue": "azfwcldcnpdvmssncussa",
 			"type": "String",
 			"metadata": {
 				"description": "The name of the storage account that contains the bootstrap file share."
@@ -204,7 +204,7 @@
 	},
 
 	"variables": {
-		"baseUrl": "https://raw.githubusercontent.com/travismoore-bluechip/autoscale/master/Version-1-0/prod/inbound",
+		"baseUrl": "https://raw.githubusercontent.com/travismoore-bluechip/autoscale/master/Version-1-0/nonprod/inbound",
 		"deployNsgURL": "[concat(variables('baseUrl'),'/deployNsg.json')]",
 		"deployLoadBalancerURL": "[concat(variables('baseUrl'),'/deployLoadBalancer.json')]",
 		"appInsightsUrl": "[concat(variables('baseUrl'),'/deployAppInsights.json')]",
@@ -218,16 +218,16 @@
 		"rgname": "[resourceGroup().name]",
 		"networkSecurityGroupName": "AZFWCLDZCNPD",
 		"hubLoadBalancerSku": "Standard",
-		"vmssName": "AZFWCLDZCPRD",
-		"fwLbName": "AZFWCLDZCPRD-IntIF-ilb",
-		"fwLbBePoolName": "AZFWCLDZCPRD_lb_backend_pool",
-		"appInsightsName": "AZFWCLDZCPRD-Prod-CentralUS-ai",
-		"loadBalancerName": "AZFWCLDZCPRD-IntIF-ilb",
-		"MgmtSubnetName": "CloudServices-PaloAltoDMZMgmtIF-172.23.6.0-24",
-		"untrustedSubnetName": "CloudServices-PaloAltoDMZExtIF-172.23.8.0-24",
-		"trustedSubnetName": "CloudServices-PaloAltoDMZIntIF-172.23.7.0-24",
-		"mgmtPublicIPName": "AZFWCLDZCPRD-Mgmt-PIP",
-		"firewallVmName": "AZFWCLDZCPRD",
+		"vmssName": "AZFWCLDZCNPD",
+		"fwLbName": "AZFWCLDZCNPD-IntIF-ilb",
+		"fwLbBePoolName": "AZFWCLDZCNPD_lb_backend_pool",
+		"appInsightsName": "AZFWCLDZCNPD-Prod-CentralUS-ai",
+		"loadBalancerName": "AZFWCLDZCNPD-IntIF-ilb",
+		"MgmtSubnetName": "CloudServices-PaloAltoDMZMgmtIF-172.23.9.0-24",
+		"untrustedSubnetName": "CloudServices-PaloAltoDMZExtIF-172.23.11.0-24",
+		"trustedSubnetName": "CloudServices-PaloAltoDMZIntIF-172.23.10.0-24",
+		"mgmtPublicIPName": "AZFWCLDZCNPD-Mgmt-PIP",
+		"firewallVmName": "AZFWCLDZCNPD",
 		"customDataField": "[concat('storage-account=', parameters('bootstrapStorageAccount'), ',access-key=', parameters('bootstrapStorageAccountAccessKey'), ',file-share=', parameters('bootstrapFileShare'),',share-directory=', parameters('bootstrapSharedDir'))]",
 		"space": " "
 	},

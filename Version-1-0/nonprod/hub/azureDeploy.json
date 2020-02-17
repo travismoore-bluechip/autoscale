@@ -29,21 +29,21 @@
 		},
 		"mgmtSubnetPrefix": {
 			"type": "string",
-			"defaultValue": "172.23.14.0/24",
+			"defaultValue": "172.23.17.0/24",
 			"metadata": {
 				"description": "CIDR for Management subnet."
 			}
 		},
 		"untrustSubnetPrefix": {
 			"type": "string",
-			"defaultValue": "172.23.16.0/24",
+			"defaultValue": "172.23.19.0/24",
 			"metadata": {
 				"description": "CIDR for Untrust Network."
 			}
 		},
 		"trustSubnetPrefix": {
 			"type": "string",
-			"defaultValue": "172.23.15.0/24",
+			"defaultValue": "172.23.18.0/24",
 			"metadata": {
 				"description": "CIDR for Trust Network."
 			}
@@ -53,7 +53,7 @@
 			"metadata": {
 				"description": "IP Address for the Internal Load Balancer in front of the Hub VM-Series Firewall."
 			},
-			"defaultValue": "172.23.15.4"
+			"defaultValue": "172.23.18.4"
 		},
 		"networkSecurityGroupInboundIP": {
 			"type": "string",
@@ -223,7 +223,7 @@
 		"fwLbBePoolName": "AZFWCLDICNPD_inbound_hub_fw_lb_backend_pool",
 		"appInsightsName": "AZFWCLDICNPD-NonProd-CentralUS-ai",
 		"loadBalancerName": "AZFWCLDICNPD-IntIF-ilb",
-		"MgmtSubnetName": "CloudServices-PaloAltoInternalMgmtIF-172.23.23.0-24",
+		"MgmtSubnetName": "CloudServices-PaloAltoInternalMgmtIF-172.23.17.0-24",
 		"untrustedSubnetName": "CloudServices-PaloAltoInternalExtIF-172.23.19.0-24",
 		"trustedSubnetName": "CloudServices-PaloAltoInternalIntIF-172.23.18.0-24",
 		"mgmtPublicIPName": "AZFWCLDICNPD-Mgmt-PIP",
