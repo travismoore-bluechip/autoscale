@@ -125,21 +125,21 @@
         },
         "username": {
             "type": "string",
-            "defaultValue": "pandemo",
+            "defaultValue": "bluechipadmin",
             "metadata": {
                 "description": "The username for the administrator account on the VM-Series firewall."
             }
         },
         "password": {
             "type": "securestring",
-            "defaultValue": "Dem0pa$$w0rd",
+            "defaultValue": "ThanksBlueChip1!",
             "metadata": {
                 "description": "The password for the administrator account. Required if Authentication Type is 'password'. Visit https://docs.microsoft.com/en-us/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm for password requirements"
             }
         },
         "bootstrapStorageAccount": {
             "type": "string",
-            "defaultValue": "prodsaautoscale001",
+            "defaultValue": "azfwcldcprdvmsspcussa",
             "metadata": {
                 "description": "The name of the storage account that contains the bootstrap file share."
             }
@@ -219,7 +219,7 @@
         "location": "[resourceGroup().location]",
         "namingInfix": "[substring(uniqueString(resourceGroup().id), 0, 5)]",
         "rgname": "[resourceGroup().name]",
-        "networkSecurityGroupName": "prodedgefw-nsg-untrusted",
+        "networkSecurityGroupName": "CloudServices-PaloAltoDMZMgmtIF-172.23.6.0-24-NSG",
         "MgmtSubnetName": "CloudServices-PaloAltoDMZMgmtIF-172.23.6.0-24",
         "untrustedSubnetName": "CloudServices-PaloAltoDMZExtIF-172.23.8.0-24",
         "trustedSubnetName": "CloudServices-PaloAltoDMZIntIF-172.23.7.0-24",
@@ -237,15 +237,15 @@
         "appInsightsComponentsApiVersion": "2018-05-01",
         "networkApiVersion": "2017-06-01",
         "computeApiVersion": "2017-03-30",
-        "appInsightsName": "prodedgefw-appinsights",
+        "appInsightsName": "AZFWCLDZCPRD-Prod-CentralUS-ai",
         "appInsightsUrl": "[concat(variables('baseUrl'),'/deployAppInsights.json')]",
         "nicNameWorker": "[concat('tempworkernic', variables('namingInfix'))]",
         "workerName": "[concat('tempworker', variables('namingInfix'))]",
         "appGatewayName": "[concat(variables('rgname'), '_appgw_', variables('namingInfix'))]",
-        "fwLbName": "prodedgefw_inbound_lb",
+        "fwLbName": "AZFWCLDZCPRD-ExtIF-elb",
         "appGwBackendPoolName": "[concat(variables('rgname'), '_appGwBepool_', variables('namingInfix'))]",
-        "fwLbBePoolName": "prodedgefw_lb_backend_pool",
-        "vmssName": "prodedgefw",
+        "fwLbBePoolName": "AZFWCLDZCPRD_lb_backend_pool",
+        "vmssName": "AZFWCLDZCPRD",
         "udrName": "defaultBackendUDR",
         "customDataField": "[concat('storage-account=', parameters('bootstrapStorageAccount'), ',access-key=', parameters('bootstrapStorageAccountAccessKey'), ',file-share=', parameters('bootstrapFileShare'),',share-directory=', parameters('bootstrapSharedDir'))]",
         "space": " "
@@ -412,9 +412,6 @@
             "name": "SetupPublicLoadBalancer",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2015-01-01",
-            "dependsOn": [
-                "Microsoft.Resources/deployments/SetupVNET"
-            ],
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
@@ -460,7 +457,7 @@
                             "privateIPAddress": "[parameters('fwLoadBalancerIP')]",
                             "privateIPAllocationMethod": "Static",
                             "subnet": {
-                                "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworkName'), variables('untrustedSubnetName'))]"
+                                "id": "/subscriptions/3c417890-8fe1-4e00-85f6-54d2c073518b/resourceGroups/Autoscale/providers/Microsoft.Network/virtualNetworks/CloudServices-172-23-0-0-18-VN/subnets/CloudServices-PaloAltoDMZExtIF-172.23.8.0-24"
                             }
                         }
                     }
@@ -516,7 +513,6 @@
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2015-01-01",
             "dependsOn": [
-                "Microsoft.Resources/deployments/SetupVNET",
                 "Microsoft.Resources/deployments/SetupPublicLoadBalancer"
             ],
             "properties": {

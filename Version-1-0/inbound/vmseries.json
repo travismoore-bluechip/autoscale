@@ -285,7 +285,7 @@
                                     "name": "[variables('ipConfigNamemgmt')]",
                                     "properties": {
                                         "subnet": {
-                                            "id": "[concat('/subscriptions/', subscription().subscriptionId,'/resourceGroups/', resourceGroup().name, '/providers/Microsoft.Network/virtualNetworks/', parameters('virtualNetworkName'), '/subnets/', parameters('subnetNameMgmt'))]"
+                                            "id": "/subscriptions/3c417890-8fe1-4e00-85f6-54d2c073518b/resourceGroups/Autoscale/providers/Microsoft.Network/virtualNetworks/CloudServices-172-23-0-0-18-VN/subnets/CloudServices-PaloAltoDMZMgmtIF-172.23.6.0-24"
                                         },
                                         "publicIPAddressConfiguration": {
                                             "name": "pavm_pip",
@@ -307,7 +307,7 @@
                                     "name": "[variables('ipConfigNameuntrust')]",
                                     "properties": {
                                         "subnet": {
-                                            "id": "[concat('/subscriptions/', subscription().subscriptionId,'/resourceGroups/', resourceGroup().name, '/providers/Microsoft.Network/virtualNetworks/', parameters('virtualNetworkName'), '/subnets/', parameters('subnetNameUntrust'))]"
+                                            "id": "/subscriptions/3c417890-8fe1-4e00-85f6-54d2c073518b/resourceGroups/Autoscale/providers/Microsoft.Network/virtualNetworks/CloudServices-172-23-0-0-18-VN/subnets/CloudServices-PaloAltoDMZExtIF-172.23.8.0-24"
                                         },
                                         "loadBalancerBackendAddressPools": [
                                         {
@@ -327,7 +327,7 @@
                                     "name": "[variables('ipConfigNametrust')]",
                                     "properties": {
                                         "subnet": {
-                                            "id": "[concat('/subscriptions/', subscription().subscriptionId,'/resourceGroups/', resourceGroup().name, '/providers/Microsoft.Network/virtualNetworks/', parameters('virtualNetworkName'), '/subnets/', parameters('subnetNameTrust'))]"
+                                            "id": "/subscriptions/3c417890-8fe1-4e00-85f6-54d2c073518b/resourceGroups/Autoscale/providers/Microsoft.Network/virtualNetworks/CloudServices-172-23-0-0-18-VN/subnets/CloudServices-PaloAltoDMZIntIF-172.23.7.0-24"
                                         }
                                     }
                                 }]
