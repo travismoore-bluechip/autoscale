@@ -4,7 +4,7 @@
     "parameters": {
         "panoramaPluginMessageHandlerName": {
             "type": "string",
-            "defaultValue": "taxonomymessagehandler",
+            "defaultValue": "AZFWCLDCPRDVMSS-Prod-CentralUS-Autoscale",
             "metadata": {
                 "description": "The name of the Azure Function that will pass messages to the Panorama plugin for Azure. The Azure function URL will begin with this name."
             }
@@ -38,7 +38,7 @@
         },
         "serviceBusName": {
             "type": "string",
-            "defaultValue": "taxonomyservicebus",
+            "defaultValue": "AZFWCLDCPRDVMSS-Prod-CentralUS-sb",
             "metadata": {
                 "description": "The name of the Service Bus that the Panorama subscribes to receive notifications from Azure. The value must be between 6 and 50 characters long. The namespace can contain only letters, numbers, and hyphens. The namespace must start with a letter, and it must end with a letter or number.This name has to be globally unique."
             }
@@ -49,13 +49,13 @@
         "functionAppName": "[parameters('panoramaPluginMessageHandlerName')]",
         "namingInfix": "[substring(uniqueString(resourceGroup().id), 0, 5)]",
         "hostingPlanName": "[concat(parameters('panoramaPluginMessageHandlerName'), '-plan')]",
-        "storageAccountName": "saautoscale001",
+        "storageAccountName": "azfwcldcprdvmsspcussa",
         "RootManageSharedAccessKey_name": "RootManageSharedAccessKey",
         "serviceBusApiVersion": "2014-09-01",
         "baseUrl" : "https://raw.githubusercontent.com/travismoore-bluechip/autoscale/master/Version-1-0/prod/infra",
         "serviceBusUrl": "[concat(variables('baseUrl'), '/deployServiceBus.json')]",
         "functionHostingPlan": "Basic",
-        "appInsightsInstancename": "[concat(parameters('panoramaPluginMessageHandlerName'), '-appinsights-', variables('namingInfix'))]",
+        "appInsightsInstancename": "AZFWCLDCPRDVMSSProdCentralUSai",
         "workerSize": "0"
     },
     "resources": [
