@@ -23,7 +23,7 @@
 	{
 		"apiVersion": "[variables('apiVersion')]",
 		"type": "Microsoft.Network/networkSecurityGroups",
-		"name": "[concat(parameters('nsgName'), '-mgmt')]",
+		"name": "[concat(parameters('nsgName'), '-MgmtIF-nsg')]",
 		"location": "[parameters('location')]",
 		"properties": {
 			"securityRules": [{
@@ -72,7 +72,7 @@
 	},
 	{
         "type": "Microsoft.Network/networkSecurityGroups",
-		"name": "[concat(parameters('nsgName'), '-untrust')]",
+		"name": "[concat(parameters('nsgName'), '-ExtIF-nsg')]",
         "apiVersion": "2017-06-01",
         "location": "[parameters('location')]",
         "properties": {
@@ -211,11 +211,11 @@
 	],
 	"outputs": {
         "MgmtSubnetNsgName": {
-            "value": "[concat(parameters('nsgName'), '-mgmt')]",
+            "value": "[concat(parameters('nsgName'), '-MgmtIF-nsg')]",
             "type": "string"
         },
         "UntrustSubnetNsgName": {
-            "value": "[concat(parameters('nsgName'), '-untrust')]",
+            "value": "[concat(parameters('nsgName'), '-ExtIF-nsg')]",
             "type": "string"
         }
 	}

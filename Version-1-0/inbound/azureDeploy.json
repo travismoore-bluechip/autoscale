@@ -216,7 +216,7 @@
 		"namingInfix": "[substring(uniqueString(resourceGroup().id), 0, 5)]",
 		"location": "[resourceGroup().location]",
 		"rgname": "[resourceGroup().name]",
-		"networkSecurityGroupName": "CloudServices-PaloAltoDMZMgmtIF-172.23.6.0-24-NSG",
+		"networkSecurityGroupName": "AZFWCLDZCNPD",
 		"hubLoadBalancerSku": "Standard",
 		"vmssName": "AZFWCLDZCPRD",
 		"fwLbName": "AZFWCLDZCPRD-IntIF-ilb",
