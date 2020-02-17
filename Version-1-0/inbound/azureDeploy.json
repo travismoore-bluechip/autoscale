@@ -396,9 +396,6 @@
                 "inboundNatRules": [],
                 "inboundNatPools": []
             },
-            "dependsOn": [
-                "Microsoft.Resources/deployments/SetupPublicLoadBalancer"
-            ]
         },
         {
             "name": "SetupVMSeries",
