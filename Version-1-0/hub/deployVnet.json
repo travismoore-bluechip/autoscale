@@ -6,13 +6,6 @@
 			"type": "string",
 			"defaultValue": "nsg-default1"
 		},
-		"virtualNetworkrg": {
-			"type": "string",
-			"defaultValue": "CloudServices-172-23-0-0-18-RG",
-			"metadata": {
-				"description": "VNET Resource Group Name"
-			}
-		},
 		"virtualNetworkName": {
 			"type": "string",
 			"defaultValue": "vnet",
@@ -84,7 +77,7 @@
 	},
 	"variables": {
 		"location"         : "[resourceGroup().location]",
-		"rgname"           : "[parameters('virtualNetworkrg')]",
+		"rgname"           : "[resourceGroup().id]",
 		"vnetname"         : "[parameters('virtualNetworkName')]",
 		"vnetID"           : "[resourceId('Microsoft.Network/virtualNetworks',variables('vnetname'))]",
 		"mgmtSubnetRef"    : "[concat(variables('vnetID'),'/subnets/',parameters('mgmtSubnetName'))]",

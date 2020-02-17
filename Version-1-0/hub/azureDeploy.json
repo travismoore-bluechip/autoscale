@@ -15,35 +15,35 @@
         },
         "virtualNetworkName": {
             "type": "string",
-            "defaultValue": "CloudServices-172-23-0-0-18-VN",
+            "defaultValue": "hub-vnet",
             "metadata": {
                 "description": "Virtual Network Name of the VM-Series Hub firewall."
             }
         },
         "virtualNetworkAddressPrefix": {
             "type": "string",
-            "defaultValue": "172.23.0.0/18",
+            "defaultValue": "172.16.0.0/16",
             "metadata": {
                 "description": "CIDR for Virtual Network."
             }
         },
         "mgmtSubnetPrefix": {
             "type": "string",
-            "defaultValue": "172.23.14.0/24",
+            "defaultValue": "172.16.0.0/24",
             "metadata": {
                 "description": "CIDR for Management subnet."
             }
         },
         "untrustSubnetPrefix": {
             "type": "string",
-            "defaultValue": "172.23.16.0/24",
+            "defaultValue": "172.16.1.0/24",
             "metadata": {
                 "description": "CIDR for Untrust Network."
             }
         },
         "trustSubnetPrefix": {
             "type": "string",
-            "defaultValue": "172.23.15.0/24",
+            "defaultValue": "172.16.2.0/24",
             "metadata": {
                 "description": "CIDR for Trust Network."
             }
@@ -53,7 +53,7 @@
             "metadata": {
                 "description": "IP Address for the Internal Load Balancer in front of the Hub VM-Series Firewall."
             },
-            "defaultValue": "172.23.15.4"
+            "defaultValue": "172.16.2.4"
         },
         "networkSecurityGroupInboundIP": {
             "type": "string",
@@ -110,20 +110,20 @@
         },
        "username": {
             "type": "string",
-            "defaultValue": "bluechipadmin",
+            "defaultValue": "pandemo",
             "metadata": {
                 "description": "The username for the administrator account on the VM-Series firewall."
             }
         },
         "password": {
             "type": "securestring",
-            "defaultValue": "ThanksBlueChip1!",
+            "defaultValue": "Dem0pa$$w0rd",
             "metadata": {
                 "description": "The password for the administrator account. Required if Authentication Type is 'password'. Visit https://docs.microsoft.com/en-us/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm for password requirements"
             }
         },
 		"bootstrapStorageAccount": {
-			"defaultValue": "azfwcldcprdvmsspcussa",
+			"defaultValue": "",
 			"type": "String",
 			"metadata": {
                 "description": "The name of the storage account that contains the bootstrap file share."
@@ -136,14 +136,14 @@
             }
         },
 		"bootstrapFileShare": {
-			"defaultValue": "share",
+			"defaultValue": "",
 			"type": "String",
 			"metadata": {
                 "description": "The name of the file share that contains the bootstrap folders."
 			}
 		},
 		"bootstrapSharedDir": {
-			"defaultValue": "bootstrap",
+			"defaultValue": "None",
 			"type": "String",
 			"metadata": {
                 "description": "(OPTIONAL) The directory name under file share that contains the bootstrap folders."
@@ -151,14 +151,14 @@
 		},
         "vmScaleSetMinCount": {
             "type": "int",
-            "defaultValue": 3,
+            "defaultValue": 2,
             "metadata": {
                 "description": "The minimum (and default) number of VM-Series firewall(s) to deploy in the VM Scale Set."
             }
         },
         "vmScaleSetMaxCount": {
             "type": "int",
-            "defaultValue": 12,
+            "defaultValue": 3,
             "metadata": {
                 "description": "The maximum number of VM-Series firewall(s) to deploy in the VM Scale Set."
             }
@@ -203,7 +203,7 @@
     },
     
     "variables": {
-        "baseUrl" : "https://raw.githubusercontent.com/travismoore-bluechip/autoscale/master/Version-1-0/hub",
+        "baseUrl" : "https://raw.githubusercontent.com/PaloAltoNetworks/azure-autoscaling/master/Version-1-0/hub",
         "deployNsgURL"         : "[concat(variables('baseUrl'),'/deployNsg.json')]",
         "deployVnetURL"        : "[concat(variables('baseUrl'),'/deployVnet.json')]",
         "deployLoadBalancerURL": "[concat(variables('baseUrl'),'/deployLoadBalancer.json')]",
@@ -218,16 +218,16 @@
         "rgname"     : "[resourceGroup().name]",
         "networkSecurityGroupName": "[concat(variables('rgname'), '-nsg' )]",
         "hubLoadBalancerSku": "Standard",
-        "vmssName": "AZFWCLDICPRD",
-        "fwLbName": "AZFWCLDICPRD-ExtIF-elb",
-        "fwLbBePoolName": "AZFWCLDICPRD_inbound_hub_fw_lb_backend_pool",
-        "appInsightsName": "AZFWCLDICPRD-Prod-CentralUS-ai",
-        "loadBalancerName": "AZFWCLDICPRD-IntIF-ilb",
-        "MgmtSubnetName" : "CloudServices-PaloAltoInternalMgmtIF-172.23.14.0-24",
-        "untrustedSubnetName" : "CloudServices-PaloAltoInternalExtIF-172.23.16.0-24",
-        "trustedSubnetName" : "CloudServices-PaloAltoInternalIntIF-172.23.15.0-24",
-        "mgmtPublicIPName" : "AZFWCLDICPRD-Mgmt-PIP",
-        "firewallVmName": "AZFWCLDICPRD",
+        "vmssName": "[concat('pavmfw', variables('namingInfix'))]",
+        "fwLbName": "[concat(variables('rgname'), '_inbound_hub_fw_lb_', variables('namingInfix'))]",
+        "fwLbBePoolName": "[concat(variables('rgname'), '_inbound_hub_fw_lb_backend_pool_', variables('namingInfix'))]",
+        "appInsightsName": "[concat(variables('rgname'), '-appinsights-', variables('namingInfix'))]",
+        "loadBalancerName": "[concat(variables('rgname'), '-outbound-lb' )]",
+        "MgmtSubnetName" : "[concat(parameters('virtualNetworkName'), '-mgmt-subnet')]",
+        "untrustedSubnetName" : "[concat(parameters('virtualNetworkName'), '-untrust-subnet')]",
+        "trustedSubnetName" : "[concat(parameters('virtualNetworkName'), '-trust-subnet')]",
+        "mgmtPublicIPName" : "[concat(variables('rgname'), '-mgmt-pip-', variables('namingInfix'))]",
+        "firewallVmName": "[concat(variables('rgName'), '-outbound-vm-series-firewall')]",
 		"customDataField": "[concat('storage-account=', parameters('bootstrapStorageAccount'), ',access-key=', parameters('bootstrapStorageAccountAccessKey'), ',file-share=', parameters('bootstrapFileShare'),',share-directory=', parameters('bootstrapSharedDir'))]",
         "space": " "
     },
