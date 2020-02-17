@@ -204,7 +204,7 @@
 	},
 
 	"variables": {
-		"baseUrl": "https://raw.githubusercontent.com/travismoore-bluechip/autoscale/master/Version-1-0/inbound",
+		"baseUrl": "https://raw.githubusercontent.com/travismoore-bluechip/autoscale/master/Version-1-0/prod/inbound",
 		"deployNsgURL": "[concat(variables('baseUrl'),'/deployNsg.json')]",
 		"deployLoadBalancerURL": "[concat(variables('baseUrl'),'/deployLoadBalancer.json')]",
 		"appInsightsUrl": "[concat(variables('baseUrl'),'/deployAppInsights.json')]",
@@ -326,7 +326,7 @@
 						"value": "[variables('location')]"
 					},
 					"virtualNetworkRG": {
-						"value": "Autoscale"
+						"value": "CloudServices-172-23-0-0-18-RG"
 					},
 					"virtualNetworkName": {
 						"value": "[parameters('virtualNetworkName')]"

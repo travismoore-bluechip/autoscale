@@ -204,7 +204,7 @@
 	},
 
 	"variables": {
-		"baseUrl": "https://raw.githubusercontent.com/travismoore-bluechip/autoscale/master/Version-1-0/hub",
+		"baseUrl": "https://raw.githubusercontent.com/travismoore-bluechip/autoscale/master/Version-1-0/nonprod/hub",
 		"deployNsgURL": "[concat(variables('baseUrl'),'/deployNsg.json')]",
 		"deployLoadBalancerURL": "[concat(variables('baseUrl'),'/deployLoadBalancer.json')]",
 		"appInsightsUrl": "[concat(variables('baseUrl'),'/deployAppInsights.json')]",
@@ -218,16 +218,16 @@
 		"rgname": "[resourceGroup().name]",
 		"networkSecurityGroupName": "[concat(variables('rgname'), '-nsg' )]",
 		"hubLoadBalancerSku": "Standard",
-		"vmssName": "AZFWCLDICPRD",
-		"fwLbName": "AZFWCLDICPRD-ExtIF-elb",
-		"fwLbBePoolName": "AZFWCLDICPRD_inbound_hub_fw_lb_backend_pool",
-		"appInsightsName": "AZFWCLDICPRD-Prod-CentralUS-ai",
-		"loadBalancerName": "AZFWCLDICPRD-IntIF-ilb",
-		"MgmtSubnetName": "CloudServices-PaloAltoInternalMgmtIF-172.23.14.0-24",
-		"untrustedSubnetName": "CloudServices-PaloAltoInternalExtIF-172.23.16.0-24",
-		"trustedSubnetName": "CloudServices-PaloAltoInternalIntIF-172.23.15.0-24",
-		"mgmtPublicIPName": "AZFWCLDICPRD-Mgmt-PIP",
-		"firewallVmName": "AZFWCLDICPRD",
+		"vmssName": "AZFWCLDICNPD",
+		"fwLbName": "AZFWCLDICNPD-ExtIF-elb",
+		"fwLbBePoolName": "AZFWCLDICNPD_inbound_hub_fw_lb_backend_pool",
+		"appInsightsName": "AZFWCLDICNPD-NonProd-CentralUS-ai",
+		"loadBalancerName": "AZFWCLDICNPD-IntIF-ilb",
+		"MgmtSubnetName": "CloudServices-PaloAltoInternalMgmtIF-172.23.23.0-24",
+		"untrustedSubnetName": "CloudServices-PaloAltoInternalExtIF-172.23.19.0-24",
+		"trustedSubnetName": "CloudServices-PaloAltoInternalIntIF-172.23.18.0-24",
+		"mgmtPublicIPName": "AZFWCLDICNPD-Mgmt-PIP",
+		"firewallVmName": "AZFWCLDICNPD",
 		"customDataField": "[concat('storage-account=', parameters('bootstrapStorageAccount'), ',access-key=', parameters('bootstrapStorageAccountAccessKey'), ',file-share=', parameters('bootstrapFileShare'),',share-directory=', parameters('bootstrapSharedDir'))]",
 		"space": " "
 	},
@@ -326,7 +326,7 @@
 						"value": "[variables('location')]"
 					},
 					"virtualNetworkRG": {
-						"value": "Autoscale"
+						"value": "CloudServices-172-23-0-0-18-RG"
 					},
 					"virtualNetworkName": {
 						"value": "[parameters('virtualNetworkName')]"
