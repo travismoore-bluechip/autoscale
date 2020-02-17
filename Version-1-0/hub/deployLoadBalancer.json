@@ -29,6 +29,7 @@
 		},
 		"virtualNetworkName": {
 			"type": "string",
+			"defaultValue": "CloudServices-172-23-0-0-18-VN"
 			"metadata": {
 				"description": "Name of the Virtual Network (VNET)"
 			}
@@ -60,7 +61,7 @@
 	},
 
 	"variables": {
-		"vnetId": "[resourceId(parameters('virtualNetworkRG'), 'Microsoft.Network/virtualNetworks/', parameters('virtualNetworkName'))]",
+		"vnetId": "/subscriptions/3c417890-8fe1-4e00-85f6-54d2c073518b/resourceGroups/Autoscale/providers/Microsoft.Network/virtualNetworks/CloudServices-172-23-0-0-18-VN",
 		"lbId": "[resourceId('Microsoft.Network/loadBalancers/', parameters('loadBalancerName'))]"
 	},
 
