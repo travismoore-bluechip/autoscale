@@ -228,7 +228,6 @@
         "firewallVmCount": 2,
         "baseUrl": "https://raw.githubusercontent.com/travismoore-bluechip/autoscale/master/Version-1-0/inbound",
         "nsgURL": "[concat(variables('baseUrl'),'/nsg-new.json')]",
-        "vnetURL": "[concat(variables('baseUrl'),'/deployVnet.json')]",
         "publicLBURL": "[concat(variables('baseUrl'),'/public-lb-', variables('LoadBalancerType'), '.json')]",
         "defaultUdrSetupURL": "[concat(variables('baseUrl'), '/deployDefaultUDR.json')]",
         "defaultEmptyUdrSetupURL": "[concat(variables('baseUrl'), '/deployEmptyUDR.json')]",
@@ -330,27 +329,7 @@
             }
         },
         {
-            "condition": "[equals(parameters('deployIntoExistingVnet'), 'No')]",
-            "name": "SetupDefaultUDR",
-            "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2015-01-01",
-            "dependsOn": [
-                "Microsoft.Resources/deployments/SetupNSG"
-            ],
-            "properties": {
-                "mode": "Incremental",
-                "templateLink": {
-                    "uri": "[variables('defaultEmptyUdrSetupURL')]",
-                    "contentVersion": "1.0.0.0"
-                },
-                "parameters": {
-                    "udrName": {
-                        "value": "[variables('udrName')]"
-                    }
-                }
-            }
-        },
-        {
+            "name": "SetupPublicLoadBalancer",
             "type": "Microsoft.Network/loadBalancers",
             "sku": {
                 "name": "Standard",
