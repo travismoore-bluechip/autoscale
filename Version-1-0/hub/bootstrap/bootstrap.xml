@@ -1,0 +1,344 @@
+<?xml version="1.0"?>
+<config version="9.0.0" urldb="paloaltonetworks">
+  <mgt-config>
+    <devices>
+      <entry name="007257000101356">
+        <auto-push>no</auto-push>
+      </entry>
+      <entry name="007257000101357"/>
+    </devices>
+    <users>
+      <entry name="admin">
+        <phash>*</phash>
+        <permissions>
+          <role-based>
+            <superuser>yes</superuser>
+          </role-based>
+        </permissions>
+      </entry>
+      <entry name="bluechipadmin">
+        <phash>$1$gwcuxsbg$pdLR/Lc/UjNqy24fsfpB3.</phash>
+        <permissions>
+          <role-based>
+            <superuser>yes</superuser>
+          </role-based>
+        </permissions>
+      </entry>
+      <entry name="__azure">
+        <phash>$1$hudjjbyw$cdV1WBRAFfcQmoNM0zB03/</phash>
+        <permissions>
+          <role-based>
+            <panorama-admin>yes</panorama-admin>
+          </role-based>
+        </permissions>
+      </entry>
+    </users>
+  </mgt-config>
+  <shared>
+    <content-preview>
+      <application/>
+      <application-type>
+        <category/>
+        <technology/>
+      </application-type>
+    </content-preview>
+  </shared>
+  <devices>
+    <entry name="localhost.localdomain">
+      <deviceconfig>
+        <system>
+          <update-server>updates.paloaltonetworks.com</update-server>
+          <update-schedule>
+            <threats>
+              <recurring>
+                <weekly>
+                  <day-of-week>wednesday</day-of-week>
+                  <at>01:02</at>
+                  <action>download-only</action>
+                </weekly>
+              </recurring>
+            </threats>
+          </update-schedule>
+          <timezone>America/Detroit</timezone>
+          <service>
+            <disable-telnet>yes</disable-telnet>
+            <disable-http>yes</disable-http>
+          </service>
+          <type>
+            <dhcp-client>
+              <send-hostname>yes</send-hostname>
+              <send-client-id>no</send-client-id>
+              <accept-dhcp-hostname>no</accept-dhcp-hostname>
+              <accept-dhcp-domain>no</accept-dhcp-domain>
+            </dhcp-client>
+          </type>
+          <hostname>AZPANCLDMCPRD01</hostname>
+          <dns-setting>
+            <servers>
+              <primary>8.8.8.8</primary>
+            </servers>
+          </dns-setting>
+        </system>
+        <setting>
+          <management>
+            <storage-partition>
+              <internal/>
+            </storage-partition>
+            <hostname-type-in-syslog>FQDN</hostname-type-in-syslog>
+            <initcfg>
+              <type>
+                <dhcp-client>
+                  <send-hostname>yes</send-hostname>
+                  <send-client-id>no</send-client-id>
+                  <accept-dhcp-hostname>no</accept-dhcp-hostname>
+                  <accept-dhcp-domain>no</accept-dhcp-domain>
+                </dhcp-client>
+              </type>
+              <hostname>AZPANCLDMCPRD01</hostname>
+              <username>bluechipadmin</username>
+            </initcfg>
+          </management>
+        </setting>
+      </deviceconfig>
+      <plugins>
+        <azure version="2.0.1">
+          <service-principal>
+            <entry name="svc_AZFWCLDC-All-CentralUS">
+              <description>svc_AZFWCLDC-All-CentralUS</description>
+              <subscription-id>1ff5ac8f-dc02-40a4-a311-3d5c522db447</subscription-id>
+              <client-id>5d3c189f-a64c-4b51-ba5b-97eee533e063</client-id>
+              <client-secret>-AQ==Ku5TZSn4gzGbzZbbVLjq5keT5f8=DV03W3akfHhK0nYR3/7/BIs3tkhqjfC2o8zm7/SWqi37BYOjLOznVQRv4IrSeSUD</client-secret>
+              <tenant-id>46080c3d-3ac0-45d5-bdb0-f66e64e4bef9</tenant-id>
+            </entry>
+          </service-principal>
+          <autoscaling>
+            <entry name="Non-Production Autoscale">
+              <service-bus-name>AZFWCLDCPRDVMSSNonProdCentralUSsb</service-bus-name>
+              <shared-access-token>-AQ==5SreExVrZKXTBG6iVQF7ojr1aAU=l+LcwZXx9pB/ragB+/LqZgFH6M8j3Q7Ok2zIa+MVsh8mjOw5c7mr3FT1AlmMQISp</shared-access-token>
+              <service-bus-key-name>RootManageSharedAccessKey</service-bus-key-name>
+              <service-principal>svc_AZFWCLDC-All-CentralUS</service-principal>
+              <firewall-resource-group>
+                <entry name="AZFWCLDICNPD-Nonprod-CentralUS">
+                  <description>AZFWCLDICNPD-Nonprod-CentralUS</description>
+                  <resource-group-type>hub</resource-group-type>
+                  <device-group>Non-Production Hub</device-group>
+                  <template-stack>Azure-Template-Hub</template-stack>
+                  <auto-program-routes>yes</auto-program-routes>
+                </entry>
+                <entry name="AZFWCLDZCNPD-Nonprod-CentralUS">
+                  <description>AZFWCLDZCNPD-Nonprod-CentralUS</description>
+                  <resource-group-type>inbound</resource-group-type>
+                  <device-group>Non-Production DMZ</device-group>
+                  <template-stack>Azure-Template-DMZ</template-stack>
+                  <auto-program-routes>yes</auto-program-routes>
+                </entry>
+              </firewall-resource-group>
+            </entry>
+          </autoscaling>
+        </azure>
+      </plugins>
+      <device-group>
+        <entry name="Non-Production Hub">
+          <devices>
+            <entry name="007257000101356"/>
+          </devices>
+        </entry>
+        <entry name="Non-Production DMZ">
+          <devices>
+            <entry name="007257000101357"/>
+          </devices>
+        </entry>
+      </device-group>
+      <template-stack>
+        <entry name="Azure-Template-DMZ">
+          <settings/>
+          <templates>
+            <member>NonProd-DMZ</member>
+          </templates>
+          <config>
+            <devices>
+              <entry name="localhost.localdomain">
+                <deviceconfig>
+                  <plugins>
+                    <vm_series version="1.0.0">
+                      <azure-advanced-metrics>
+                        <enable>yes</enable>
+                        <instrumentation-key>374dfc78-a95d-4d0a-8609-058e6c0c81ba</instrumentation-key>
+                        <update-interval>1</update-interval>
+                      </azure-advanced-metrics>
+                    </vm_series>
+                  </plugins>
+                </deviceconfig>
+              </entry>
+            </devices>
+          </config>
+        </entry>
+        <entry name="Azure-Template-Hub">
+          <settings/>
+          <templates>
+            <member>NonProd-Hub</member>
+          </templates>
+          <config>
+            <devices>
+              <entry name="localhost.localdomain">
+                <network>
+                  <virtual-router>
+                    <entry name="VirtualRouter01">
+                      <protocol>
+                        <rip>
+                          <enable>no</enable>
+                        </rip>
+                        <ospf>
+                          <enable>no</enable>
+                        </ospf>
+                        <ospfv3>
+                          <enable>no</enable>
+                        </ospfv3>
+                        <bgp>
+                          <enable>no</enable>
+                        </bgp>
+                      </protocol>
+                      <ecmp>
+                        <algorithm>
+                          <ip-modulo/>
+                        </algorithm>
+                      </ecmp>
+                    </entry>
+                  </virtual-router>
+                </network>
+                <deviceconfig>
+                  <plugins>
+                    <vm_series>
+                      <azure-advanced-metrics>
+                        <enable>yes</enable>
+                        <instrumentation-key>289ca054-0c3e-4593-9996-ded444e5b863</instrumentation-key>
+                        <update-interval>1</update-interval>
+                      </azure-advanced-metrics>
+                    </vm_series>
+                  </plugins>
+                </deviceconfig>
+              </entry>
+            </devices>
+          </config>
+        </entry>
+      </template-stack>
+      <template>
+        <entry name="Prod-Hub">
+          <settings>
+            <default-vsys>vsys1</default-vsys>
+          </settings>
+          <config>
+            <devices>
+              <entry name="localhost.localdomain">
+                <vsys>
+                  <entry name="vsys1"/>
+                </vsys>
+              </entry>
+            </devices>
+          </config>
+        </entry>
+        <entry name="NonProd-Hub">
+          <settings>
+            <default-vsys>vsys1</default-vsys>
+          </settings>
+          <config>
+            <devices>
+              <entry name="localhost.localdomain">
+                <vsys>
+                  <entry name="vsys1"/>
+                </vsys>
+              </entry>
+            </devices>
+          </config>
+        </entry>
+        <entry name="Prod-DMZ">
+          <settings>
+            <default-vsys>vsys1</default-vsys>
+          </settings>
+          <config>
+            <devices>
+              <entry name="localhost.localdomain">
+                <vsys>
+                  <entry name="vsys1"/>
+                </vsys>
+              </entry>
+            </devices>
+          </config>
+        </entry>
+        <entry name="NonProd-DMZ">
+          <settings>
+            <default-vsys>vsys1</default-vsys>
+          </settings>
+          <config>
+            <devices>
+              <entry name="localhost.localdomain">
+                <vsys>
+                  <entry name="vsys1"/>
+                </vsys>
+              </entry>
+            </devices>
+          </config>
+        </entry>
+      </template>
+    </entry>
+  </devices>
+  <readonly>
+    <max-internal-id>24</max-internal-id>
+    <devices>
+      <entry name="localhost.localdomain">
+        <plugins>
+          <azure>
+            <service-principal>
+              <entry name="svc_AZFWCLDC-All-CentralUS">
+                <id>11</id>
+              </entry>
+            </service-principal>
+            <autoscaling>
+              <entry name="Non-Production Autoscale">
+                <id>12</id>
+                <firewall-resource-group>
+                  <entry name="AZFWCLDICNPD-Nonprod-CentralUS">
+                    <id>23</id>
+                  </entry>
+                  <entry name="AZFWCLDZCNPD-Nonprod-CentralUS">
+                    <id>24</id>
+                  </entry>
+                </firewall-resource-group>
+              </entry>
+            </autoscaling>
+          </azure>
+        </plugins>
+        <device-group>
+          <entry name="Non-Production Hub">
+            <id>13</id>
+          </entry>
+          <entry name="Non-Production DMZ">
+            <id>14</id>
+          </entry>
+        </device-group>
+        <template-stack>
+          <entry name="Azure-Template-DMZ">
+            <id>15</id>
+          </entry>
+          <entry name="Azure-Template-Hub">
+            <id>16</id>
+          </entry>
+        </template-stack>
+        <template>
+          <entry name="Prod-Hub">
+            <id>19</id>
+          </entry>
+          <entry name="NonProd-Hub">
+            <id>20</id>
+          </entry>
+          <entry name="Prod-DMZ">
+            <id>21</id>
+          </entry>
+          <entry name="NonProd-DMZ">
+            <id>22</id>
+          </entry>
+        </template>
+      </entry>
+    </devices>
+  </readonly>
+</config>
