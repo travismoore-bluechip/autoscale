@@ -64,10 +64,6 @@
 		},
 		"imageVersion": {
 			"type": "string",
-			"allowedValues": [
-				"latest",
-				"8.1.0"
-			],
 			"defaultValue": "latest",
 			"metadata": {
 				"description": "VM-Series Firewall PAN OS Version"
