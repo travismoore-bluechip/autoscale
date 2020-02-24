@@ -205,7 +205,6 @@
     "variables": {
         "baseUrl" : "https://raw.githubusercontent.com/travismoore-bluechip/autoscale/master/Version-1-0/nonprod/hub",
         "deployNsgURL"         : "[concat(variables('baseUrl'),'/deployNsg.json')]",
-        "deployVnetURL"        : "[concat(variables('baseUrl'),'/deployVnet.json')]",
         "deployLoadBalancerURL": "[concat(variables('baseUrl'),'/deployLoadBalancer.json')]",
         "appInsightsUrl": "[concat(variables('baseUrl'),'/deployAppInsights.json')]",
         "vmseriesURL" : "[concat(variables('baseUrl'),'/vmseries.json')]",
@@ -310,60 +309,10 @@
                 }
             }
         },
-        {
-            "name": "deployVnet",
-            "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2015-01-01",
-            "dependsOn": [
-                "Microsoft.Resources/deployments/deployNsg"
-            ],
-            "properties": {
-                "mode": "Incremental",
-                "templateLink": {
-                    "uri": "[variables('deployVnetURL')]",
-                    "contentVersion": "1.0.0.0"
-                },
-                "parameters": {
-                    "nsgName": {
-                        "value": "[reference('deployNsg').outputs.MgmtSubnetNsgName.value]"
-                    },
-                    "virtualNetworkName": {
-                        "value": "[parameters('virtualNetworkName')]"
-                    },
-                    "virtualNetworkAddressPrefix": {
-                        "value": "[parameters('virtualNetworkAddressPrefix')]"
-                    },
-                    "mgmtSubnetName": {
-                        "value": "[variables('mgmtSubnetName')]"
-                    },
-                    "untrustSubnetName": {
-                        "value": "[variables('untrustedSubnetName')]"
-                    },
-                    "trustSubnetName": {
-                        "value": "[variables('trustedSubnetName')]"
-                    },
-                    "mgmtSubnetPrefix": {
-                        "value": "[parameters('mgmtSubnetPrefix')]"
-                    },
-                    "untrustSubnetPrefix": {
-                        "value": "[parameters('untrustSubnetPrefix')]"
-                    },
-                    "trustSubnetPrefix": {
-                        "value": "[parameters('trustSubnetPrefix')]"
-                    },
-                    "deployIntoExistingVnet": {
-                        "value": "[parameters('deployIntoExistingVnet')]"
-                    }
-                }
-            }
-        },
         {    
             "name": "deployOutboundLoadBalancer",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2015-01-01",
-            "dependsOn": [
-                "Microsoft.Resources/deployments/deployVNet"
-            ],
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {

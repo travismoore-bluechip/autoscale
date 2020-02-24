@@ -61,10 +61,6 @@
         },
         "imageVersion": {
             "type": "string",
-            "allowedValues": [
-                "latest",
-                "8.1.0"
-            ],
             "defaultValue": "latest",
             "metadata": {
                 "description": "PAN OS Version"
@@ -226,6 +222,11 @@
             "name": "[parameters('vmssName')]",
             "location": "[resourceGroup().location]",
             "apiVersion": "2017-12-01",
+            "zones": [
+                "1",
+                "2",
+                "3"
+            ],
             "tags": {
                 "PanoramaManaged": "yes"
             },
