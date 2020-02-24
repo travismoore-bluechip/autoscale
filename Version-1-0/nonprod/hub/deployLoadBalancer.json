@@ -59,7 +59,7 @@
 	},
 
 	"variables": {
-		"vnetId": "[resourceId(parameters('virtualNetworkRG'), 'Microsoft.Network/virtualNetworks/', parameters('virtualNetworkName'))]",
+		"vnetId": "/subscriptions/1ff5ac8f-dc02-40a4-a311-3d5c522db447/resourceGroups/CloudServices-172-23-0-0-18-RG/providers/Microsoft.Network/virtualNetworks/CloudServices-172-23-0-0-18-VN",
 		"lbId": "[resourceId('Microsoft.Network/loadBalancers/', parameters('loadBalancerName'))]"
 	},
 
