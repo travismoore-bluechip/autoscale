@@ -120,7 +120,7 @@
 			}
 		},
 		"bootstrapStorageAccount": {
-			"defaultValue": "azfwcldcprdvmsspcussa",
+			"defaultValue": "azfwcldcnpdvmssncussa",
 			"type": "String",
 			"metadata": {
 				"description": "The name of the storage account that contains the bootstrap file share."

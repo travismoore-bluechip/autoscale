@@ -77,12 +77,12 @@
 	},
 	"variables": {
 		"location"         : "[resourceGroup().location]",
-		"rgname"           : "[resourceGroup().id]",
-		"vnetname"         : "[parameters('virtualNetworkName')]",
-		"vnetID"           : "[resourceId('Microsoft.Network/virtualNetworks',variables('vnetname'))]",
-		"mgmtSubnetRef"    : "[concat(variables('vnetID'),'/subnets/',parameters('mgmtSubnetName'))]",
-		"untrustSubnetRef" : "[concat(variables('vnetID'),'/subnets/',parameters('untrustSubnetName'))]",
-		"trustSubnetRef"   : "[concat(variables('vnetID'),'/subnets/',parameters('trustSubnetName'))]",
+		"rgname"           : "CloudServices-172-23-0-0-18-RG",
+		"vnetname"         : "CloudServices-172-23-0-0-18-VN",
+		"vnetID"           : "/subscriptions/1ff5ac8f-dc02-40a4-a311-3d5c522db447/resourceGroups/CloudServices-172-23-0-0-18-RG/providers/Microsoft.Network/virtualNetworks/CloudServices-172-23-0-0-18-VN",
+		"mgmtSubnetRef"    : "/subscriptions/1ff5ac8f-dc02-40a4-a311-3d5c522db447/resourceGroups/CloudServices-172-23-0-0-18-RG/providers/Microsoft.Network/virtualNetworks/CloudServices-172-23-0-0-18-VN/subnets/CloudServices-PaloAltoInternalMgmtIF-172.23.17.0-24",
+		"untrustSubnetRef" : "/subscriptions/1ff5ac8f-dc02-40a4-a311-3d5c522db447/resourceGroups/CloudServices-172-23-0-0-18-RG/providers/Microsoft.Network/virtualNetworks/CloudServices-172-23-0-0-18-VN/subnets/CloudServices-PaloAltoInternalExtIF-172.23.19.0-24",
+		"trustSubnetRef"   : "/subscriptions/1ff5ac8f-dc02-40a4-a311-3d5c522db447/resourceGroups/CloudServices-172-23-0-0-18-RG/providers/Microsoft.Network/virtualNetworks/CloudServices-172-23-0-0-18-VN/subnets/CloudServices-PaloAltoInternalIntIF-172.23.18.0-24",
 		"subnets": [
 			{
 				"name": "[parameters('mgmtSubnetName')]",
