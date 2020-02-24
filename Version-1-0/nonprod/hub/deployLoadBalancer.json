@@ -11,7 +11,7 @@
 			"metadata": {
 				"description": "Standard or Basic"
 			},
-			"defaultValue": "Basic"
+			"defaultValue": "Standard"
 		},
 		"location": {
 			"type": "string",
