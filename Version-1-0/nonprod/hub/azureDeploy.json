@@ -213,7 +213,7 @@
 		"location": "[resourceGroup().location]",
 		"rgname": "[resourceGroup().name]",
 		"networkSecurityGroupName": "[concat(variables('rgname'), '-nsg' )]",
-		"hubLoadBalancerSku": "Standard",
+		"hubLoadBalancerSku": "Basic",
 		"vmssName": "AZFWCLDICNPD",
 		"fwLbName": "AZFWCLDICNPD-ExtIF-elb",
 		"fwLbBePoolName": "AZFWCLDICNPD_inbound_hub_fw_lb_backend_pool",
