@@ -137,14 +137,14 @@
 			}
 		},
 		"bootstrapFileShare": {
-			"defaultValue": "share",
+			"defaultValue": "nonprod",
 			"type": "String",
 			"metadata": {
 				"description": "The name of the file share that contains the bootstrap folders."
 			}
 		},
 		"bootstrapSharedDir": {
-			"defaultValue": "bootstrap",
+			"defaultValue": "inbound",
 			"type": "String",
 			"metadata": {
 				"description": "(OPTIONAL) The directory name under file share that contains the bootstrap folders."
